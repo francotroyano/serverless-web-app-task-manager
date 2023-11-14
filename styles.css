@@ -1,0 +1,72 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5; /* Fondo gris claro */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.task-manager {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333333; /* Texto negro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center; /* Centrar el contenido */
+}
+
+h1 {
+    color: #3498db; /* Azul brillante */
+}
+
+input[type="text"], textarea, button {
+    box-sizing: border-box; /* Incluir el relleno y el borde en el ancho total */
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #3498db; /* Borde azul brillante */
+    border-radius: 5px;
+    width: calc(100% - 20px); /* Restar el doble del margen para ajustar al ancho del contenedor */
+    font-family: 'Arial', sans-serif; /* Estilo de fuente */
+    font-size: 14px; /* Tamaño de fuente */
+}
+
+input[type="text"]:focus, textarea:focus, button:focus {
+    outline: none;
+    box-shadow: 0 0 5px #3498db; /* Sombra al enfocar */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    flex-direction: column; /* Alinear los elementos en columna */
+    align-items: center; /* Alinear al centro del contenedor */
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ecf0f1; /* Fondo gris claro para cada tarea */
+    border-radius: 5px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #7f8c8d; /* Texto gris para tareas completadas */
+}
+
+button {
+    background-color: #3498db; /* Azul brillante */
+    color: #ffffff; /* Texto blanco en botones */
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9; /* Cambio de color al pasar el ratón sobre el botón */
+}
