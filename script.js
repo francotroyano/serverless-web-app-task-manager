@@ -8,8 +8,8 @@ function loadTasks() {
 
     // Example tasks
     const tasks = [
-        { nameTask: "Sample Task 1", descriptionTask: "Description for Sample Task 1", toogle: false },
-        { nameTask: "Sample Task 2", descriptionTask: "Description for Sample Task 2", toogle: true },
+        //{ nameTask: "Sample Task 1", descriptionTask: "Description for Sample Task 1", toogle: false },
+        //{ nameTask: "Sample Task 2", descriptionTask: "Description for Sample Task 2", toogle: true },
         // Add more tasks as needed
     ];
 
@@ -28,7 +28,7 @@ function addTask() {
     if (taskName !== "") {
         const task = { nameTask: taskName, descriptionTask: taskDescription, toggle: false };
         addTaskToList(task);
-        saveTask(task);
+        //saveTask(task);
         taskNameInput.value = "";
         taskDescriptionInput.value = "";
     }
@@ -39,7 +39,7 @@ function addTaskToList(task, index) {
 
     const li = document.createElement("li");
     li.innerHTML = `
-        <strong class="${task.toogle ? 'toogle' : ''}">${task.nameTask}</strong>
+        <strong class="${task.toggle ? 'toggle' : ''}">${task.nameTask}</strong>
         <p>${task.descriptionTask}</p>
         <button class="toggle-btn">Toggle</button>
         <button class="delete-btn">Delete</button>
@@ -54,10 +54,19 @@ function toggleTask(index) {
 
     // Toggle the completed status
     const strongElement = taskItem.querySelector('strong');
-    strongElement.classList.toggle('toogle');
+    strongElement.classList.toggle('toggle');
+
+    // Cross out the task if it is completed and vice versa
+    if (strongElement.style.textDecoration === 'line-through') {
+        strongElement.style.textDecoration = 'none';
+    } else {
+        strongElement.style.textDecoration = 'line-through';
+    }
 
     // Implement code to update the task's completion status in storage (e.g., localStorage) here
 }
+
+
 
 function deleteTask(button) {
     const taskList = document.getElementById("taskList");
@@ -84,7 +93,7 @@ fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptio
 
 
 
-// Delegación de eventos para los botones Toggle y Delete
+// Delegating events for the Toggle and Delete buttons
 document.getElementById("taskList").addEventListener("click", function(event) {
     const target = event.target;
 
