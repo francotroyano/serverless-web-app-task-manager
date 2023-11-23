@@ -28,7 +28,7 @@ function addTask() {
     if (taskName !== "") {
         const task = { nameTask: taskName, descriptionTask: taskDescription, toggle: false };
         addTaskToList(task);
-        //saveTask(task);
+        saveTask(task);
         taskNameInput.value = "";
         taskDescriptionInput.value = "";
     }
