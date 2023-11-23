@@ -75,19 +75,18 @@ function toggleTask(index) {
 function deleteTask(button) {
     const taskList = document.getElementById("taskList");
     const li = button.parentElement;
+    const idTask = li.id; // Get the idTask of the task to be deleted
     
-    //Delete the task from DynamoDB calling the API
+    // Delete the task from DynamoDB calling the API
  
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-
-    var raw = JSON.stringify({"idTask":li.id});
+    var raw = JSON.stringify({ "idTask": idTask });
     alert(raw);
 
     // Remove the task from the DOM
     taskList.removeChild(li);
-
 
     var requestOptions = {
         method: 'DELETE',
@@ -96,9 +95,9 @@ function deleteTask(button) {
         redirect: 'follow'
     };
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
-    .then(response => response.json())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error)); 
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 function saveTask(task) {
