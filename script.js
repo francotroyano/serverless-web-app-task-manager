@@ -75,15 +75,20 @@ function toggleTask(index) {
 function deleteTask(button) {
     const taskList = document.getElementById("taskList");
     const li = button.parentElement;
-    // Remove the task from the DOM
-    taskList.removeChild(li);
     
     //Delete the task from DynamoDB calling the API
  
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+
+
     var raw = JSON.stringify(li.idTask);
     alert(raw);
+
+    // Remove the task from the DOM
+    taskList.removeChild(li);
+
+
     var requestOptions = {
         method: 'DELETE',
         headers: myHeaders,
