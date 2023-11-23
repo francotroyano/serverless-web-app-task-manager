@@ -8,8 +8,8 @@ function loadTasks() {
 
     // Example tasks
     const tasks = [
-        { name: "Sample Task 1", description: "Description for Sample Task 1", completed: false },
-        { name: "Sample Task 2", description: "Description for Sample Task 2", completed: true },
+        { nameTask: "Sample Task 1", descriptionTask: "Description for Sample Task 1", toogle: false },
+        { nameTask: "Sample Task 2", descriptionTask: "Description for Sample Task 2", toogle: true },
         // Add more tasks as needed
     ];
 
@@ -39,8 +39,8 @@ function addTaskToList(task, index) {
 
     const li = document.createElement("li");
     li.innerHTML = `
-        <strong class="${task.completed ? 'completed' : ''}">${task.name}</strong>
-        <p>${task.description}</p>
+        <strong class="${task.toogle ? 'toogle' : ''}">${task.nameTask}</strong>
+        <p>${task.descriptionTask}</p>
         <button class="toggle-btn">Toggle</button>
         <button class="delete-btn">Delete</button>
     `;
@@ -54,7 +54,7 @@ function toggleTask(index) {
 
     // Toggle the completed status
     const strongElement = taskItem.querySelector('strong');
-    strongElement.classList.toggle('completed');
+    strongElement.classList.toggle('toogle');
 
     // Implement code to update the task's completion status in storage (e.g., localStorage) here
 }
