@@ -79,10 +79,10 @@ function deleteTask(button) {
     taskList.removeChild(li);
     
     //Delete the task from DynamoDB calling the API
- /*
+ 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify(taskList.id);
+    var raw = JSON.stringify(taskList.idTask);
     alert(raw);
     var requestOptions = {
         method: 'DELETE',
@@ -94,8 +94,6 @@ function deleteTask(button) {
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error)); 
-*/
-
 }
 
 function saveTask(task) {
