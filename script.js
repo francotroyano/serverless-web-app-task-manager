@@ -86,7 +86,7 @@ function saveTask(task) {
         redirect: 'follow'
     };
 fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
-.then(response => response.text())
+.then(response => response.json())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));
 }
