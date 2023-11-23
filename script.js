@@ -79,6 +79,7 @@ function saveTask(task) {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify(task);
+    alert(raw);
     var requestOptions = {
         method: 'POST',
         headers: myHeaders,
