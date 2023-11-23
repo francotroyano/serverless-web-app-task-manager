@@ -67,9 +67,22 @@ function deleteTask(button) {
 }
 
 function saveTask(task) {
-    // Save the task to localStorage or any other storage mechanism
-    // You can use JSON.stringify() to convert the task object to a string
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify(task);
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
+.then(response => response.text())
+.then(result => console.log(result))
+.catch(error => console.log('error', error));
 }
+
+
 
 // Delegación de eventos para los botones Toggle y Delete
 document.getElementById("taskList").addEventListener("click", function(event) {
