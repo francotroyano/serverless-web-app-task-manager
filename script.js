@@ -82,7 +82,7 @@ function deleteTask(button) {
     myHeaders.append("Content-Type", "application/json");
 
 
-    var raw = JSON.stringify(li.idTask);
+    var raw = JSON.stringify({"idTask":li.id});
     alert(raw);
 
     // Remove the task from the DOM
