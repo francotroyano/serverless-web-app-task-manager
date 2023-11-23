@@ -82,7 +82,7 @@ function deleteTask(button) {
  
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify(taskList.idTask);
+    var raw = JSON.stringify(li.idTask);
     alert(raw);
     var requestOptions = {
         method: 'DELETE',
