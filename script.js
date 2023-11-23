@@ -75,10 +75,9 @@ function toggleTask(index) {
 function deleteTask(button) {
     const taskList = document.getElementById("taskList");
     const li = button.parentElement;
-    const idTask = li.id; // Get the idTask of the task to be deleted
-    
+    const idTask = li.id.toString(); // Convert idTask to a string
+
     // Delete the task from DynamoDB calling the API
- 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
