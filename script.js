@@ -76,7 +76,7 @@ function deleteTask(button) {
     const taskList = document.getElementById("taskList");
     const li = button.parentElement;
     const idTask = li.id.toString(); // Convert idTask to a string
-
+    alert(idTask);
     // Delete the task from DynamoDB calling the API
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
