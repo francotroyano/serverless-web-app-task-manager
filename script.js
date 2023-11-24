@@ -86,11 +86,11 @@ function deleteTask(button) {
 
 
 
-function deleteTaskFromStorage(idTask) {
+function deleteTaskFromStorage(taskId) {
     // Delete the task from DynamoDB calling the API
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({ "idTask": 1700778326523 });
+    var raw = JSON.stringify({ idTask: taskId });
     alert(raw);
     var requestOptions = {
         method: 'DELETE',
