@@ -8,13 +8,12 @@ function loadTasks() {
 
     //const tasks = loadTasksFromStorage();
 
-
     // Example tasks
-    //const tasks = [
+    const tasks = [
         //{ id: "ljahsdlajhds", nameTask: "Sample Task 1", descriptionTask: "Description for Sample Task 1", toogle: false },
         //{ id: "23fdsdfedwe3", nameTask: "Sample Task 2", descriptionTask: "Description for Sample Task 2", toogle: true },
         // Add more tasks as needed
-    //];
+    ];
 
     tasks.forEach(function(task, index) {
         addTaskToList(task, index);
@@ -37,13 +36,6 @@ function loadTasksFromStorage() {
         })
         .catch(error => console.log('error', error));
 }
-
-
-
-
-
-
-
 
 function addTask() {
     const taskNameInput = document.getElementById("taskNameInput");
