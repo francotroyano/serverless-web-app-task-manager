@@ -37,12 +37,13 @@ function addTask() {
     }
 }
 
-function addTaskToList(task, index) {
+function addTaskToList(task) {
     // Create the task list item
     const taskList = document.getElementById("taskList");
     
     const li = document.createElement("li");
-        li.innerHTML = `
+    li.id = task.idTask; //Establecer el id del li como el idTask de la tarea
+    li.innerHTML = `
         <strong class="${task.toggle ? 'toggle' : ''}">${task.nameTask}</strong>
         <p>${task.descriptionTask}</p>
         <button class="toggle-btn">Toggle</button>
@@ -74,32 +75,19 @@ function toggleTask(index) {
 
 function deleteTask(button) {
     const taskList = document.getElementById("taskList");
-    
     const li = button.parentElement;
-    const taskName = li.querySelector('strong').textContent;
-    const taskDescription = li.querySelector('p').textContent;
-    const taskId = li.id;
-    const taskToggle = li.querySelector('strong').classList.contains('toggle');
+    const taskId = li.id.toString;
+    alert(taskId);
+    deleteTaskFromStorage(taskId);
+    // Remove the task from the DOM
+    taskList.removeChild(li);
+}
 
-    const task = {
-        id: taskId,
-        nameTask: taskName,
-        descriptionTask: taskDescription,
-        toggle: taskToggle
-    };
-
-    const idTask = task.id.toString(); // Convert idTask to a string
-    alert(idTask);
+function deleteTaskFromStorage(idTask) {
     // Delete the task from DynamoDB calling the API
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({ "idTask": idTask });
-    alert(raw);
-
-    // Remove the task from the DOM
-    taskList.removeChild(li);
-
+    var raw = JSON.stringify({ "idTask": idTask.toString() });
     var requestOptions = {
         method: 'DELETE',
         headers: myHeaders,
@@ -113,6 +101,7 @@ function deleteTask(button) {
 }
 
 function saveTask(task) {
+    // Save the task in DynamoDB calling the API
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify(task);
@@ -123,10 +112,10 @@ function saveTask(task) {
         body: raw,
         redirect: 'follow'
     };
-fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
-.then(response => response.json())
-.then(result => console.log(result))
-.catch(error => console.log('error', error));
+    fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 
