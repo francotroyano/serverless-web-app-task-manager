@@ -74,6 +74,25 @@ function addTaskToList(task) {
     taskList.appendChild(li);
 }
 
+function saveTaskToStorage(task) {
+    // Save the task in DynamoDB calling the API
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify(task);
+    alert(raw);
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+    // API call to save the task
+    fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
 function toggleTask(index) {
     const taskList = document.getElementById("taskList");
     const taskItem = taskList.childNodes[index];
@@ -146,24 +165,7 @@ function deleteTaskFromStorage(taskId) {
         .catch(error => console.log('error', error));
 }
 
-function saveTaskToStorage(task) {
-    // Save the task in DynamoDB calling the API
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify(task);
-    alert(raw);
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-    };
-    // API call to save the task
-    fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-}
+
 
 // Delegating events for the Toggle and Delete buttons
 document.getElementById("taskList").addEventListener("click", function(event) {
