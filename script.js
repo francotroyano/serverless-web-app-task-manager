@@ -29,9 +29,11 @@ function addTask() {
 
     if (taskName !== "") {
         // Create a task object and add it to the tasks array
-        const task = { idTask: taskID, nameTask: taskName, descriptionTask: taskDescription, toggle: false};
+        const task = {idTask: taskID, nameTask: taskName, descriptionTask: taskDescription, toggle: false};
         addTaskToList(task);
-        saveTask(task);
+        // Add the task to the storage (DynamoDB)
+        saveTaskToStorage(task);
+        // Clear the input fields
         taskNameInput.value = "";
         taskDescriptionInput.value = "";
     }
@@ -71,26 +73,23 @@ function toggleTask(index) {
     // Implement code to update the task's completion status in storage (e.g., localStorage) here
 }
 
-
-
 function deleteTask(button) {
     const taskList = document.getElementById("taskList");
     const li = button.parentElement;
     const taskId = li.id;
     alert(taskId);
-    deleteTaskFromStorage(taskId);
+    const task = {idTask: taskId};
+    // Delete the task from the storage (DynamoDB)
+    deleteTaskFromStorage(task);
     // Remove the task from the DOM
     taskList.removeChild(li);
 }
-
-
-
 
 function deleteTaskFromStorage(taskId) {
     // Delete the task from DynamoDB calling the API
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({ idTask: taskId });
+    var raw = JSON.stringify(taskId);
     alert(raw);
     var requestOptions = {
         method: 'DELETE',
@@ -98,13 +97,14 @@ function deleteTaskFromStorage(taskId) {
         body: raw,
         redirect: 'follow'
     };
+    // The API is not working
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => response.json())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 }
 
-function saveTask(task) {
+function saveTaskToStorage(task) {
     // Save the task in DynamoDB calling the API
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
