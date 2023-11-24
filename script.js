@@ -24,17 +24,15 @@ function loadTasks() {
 function loadTasksFromStorage() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    var raw = "{}";
     var requestOptions = {
         method: 'GET',
         headers: myHeaders,
         redirect: 'follow'
     };
     // API call to retrieve tasks from DynamoDB
-    fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev/tasks", requestOptions)
+    fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => response.json())
         .then(tasks => {
-            alert(tasks);
             tasks.forEach(function(task) {
                 addTaskToList(task);
             });
