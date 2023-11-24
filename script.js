@@ -88,6 +88,7 @@ function deleteTaskFromStorage(idTask) {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify({ "idTask": idTask });
+    alert(raw);
     var requestOptions = {
         method: 'DELETE',
         headers: myHeaders,
