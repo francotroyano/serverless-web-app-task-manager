@@ -70,7 +70,30 @@ function toggleTask(index) {
         strongElement.style.textDecoration = 'line-through';
     }
 
-    // Implement code to update the task's completion status in storage (e.g., localStorage) here
+    // Update the task's completion status in DynamoDB    
+    taskId = taskItem.id; // Obtener el id del li= taskItem.id;
+    alert(taskId);
+    const task = {idTask: taskId, toggle: strongElement.classList.contains('toggle')};
+    saveToggleToStorage(task);
+}
+
+function saveToggleToStorage(task) {
+    // Change the toggle stake of the task in DynamoDB calling the API (if it is true, change it to false and vice versa)
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify(task);
+    alert(raw);
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+    // API call to save the task
+    fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }
 
 function deleteTask(button) {
@@ -97,7 +120,7 @@ function deleteTaskFromStorage(taskId) {
         body: raw,
         redirect: 'follow'
     };
-    // The API is not working
+    // API call to delete the task
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => response.json())
         .then(result => console.log(result))
@@ -116,13 +139,12 @@ function saveTaskToStorage(task) {
         body: raw,
         redirect: 'follow'
     };
+    // API call to save the task
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => response.json())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 }
-
-
 
 // Delegating events for the Toggle and Delete buttons
 document.getElementById("taskList").addEventListener("click", function(event) {
