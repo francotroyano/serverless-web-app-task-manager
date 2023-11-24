@@ -76,7 +76,7 @@ function toggleTask(index) {
 function deleteTask(button) {
     const taskList = document.getElementById("taskList");
     const li = button.parentElement;
-    const taskId = li.id.toString;
+    const taskId = li.id.toString();
     alert(taskId);
     deleteTaskFromStorage(taskId);
     // Remove the task from the DOM
