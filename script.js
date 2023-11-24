@@ -6,7 +6,7 @@ function loadTasks() {
     const taskList = document.getElementById("taskList");
     taskList.innerHTML = "";
 
-    const tasks = loadTasksFromStorage();
+    //const tasks = loadTasksFromStorage();
 
 
     // Example tasks
