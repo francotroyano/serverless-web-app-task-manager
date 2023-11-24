@@ -28,7 +28,6 @@ function loadTasksFromStorage() {
     var requestOptions = {
         method: 'GET',
         headers: myHeaders,
-        body: raw,
         redirect: 'follow'
     };
     // API call to retrieve tasks from DynamoDB
