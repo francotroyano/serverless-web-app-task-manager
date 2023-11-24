@@ -6,17 +6,44 @@ function loadTasks() {
     const taskList = document.getElementById("taskList");
     taskList.innerHTML = "";
 
+    const tasks = loadTasksFromStorage();
+
+
     // Example tasks
-    const tasks = [
+    //const tasks = [
         //{ id: "ljahsdlajhds", nameTask: "Sample Task 1", descriptionTask: "Description for Sample Task 1", toogle: false },
         //{ id: "23fdsdfedwe3", nameTask: "Sample Task 2", descriptionTask: "Description for Sample Task 2", toogle: true },
         // Add more tasks as needed
-    ];
+    //];
 
     tasks.forEach(function(task, index) {
         addTaskToList(task, index);
     });
 }
+
+function loadTasksFromStorage() {
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+
+    // API call to retrieve tasks from DynamoDB
+    fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev/tasks", requestOptions)
+        .then(response => response.json())
+        .then(tasks => {
+            tasks.forEach(function(task) {
+                addTaskToList(task);
+            });
+        })
+        .catch(error => console.log('error', error));
+}
+
+
+
+
+
+
+
 
 function addTask() {
     const taskNameInput = document.getElementById("taskNameInput");
