@@ -41,7 +41,7 @@ function addTask() {
     const taskNameInput = document.getElementById("taskNameInput");
     const taskDescriptionInput = document.getElementById("taskDescriptionInput");
 
-    const taskID = Date.now(); // Generate a unique ID for the task
+    const taskID = Date.now().toString(); // Generate a unique ID (String type) for the task
     alert(taskID);
     const taskName = taskNameInput.value.trim();
     const taskDescription = taskDescriptionInput.value.trim();
