@@ -1,12 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
     loadTasks();
+    // Load tasks from the storage (DynamoDB)
+    loadTasksFromStorage();
 });
 
 function loadTasks() {
     const taskList = document.getElementById("taskList");
     taskList.innerHTML = "";
-    // Load tasks from the storage (DynamoDB)
-    loadTasksFromStorage();
+    
+    
 
     // Example tasks
     //const tasks = [
