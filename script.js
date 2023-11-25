@@ -35,9 +35,10 @@ function loadTasksFromStorage() {
     };
     // API call to retrieve tasks from DynamoDB
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
-        .then(response => response.json()
+        .then(response => {
+            response.json();
             alert(response.json());
-        )
+        })
         .then(result => {
             alert(result);
             let size = result.length;
