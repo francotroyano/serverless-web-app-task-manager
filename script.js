@@ -1,7 +1,8 @@
+loadTasksFromStorage();
 document.addEventListener("DOMContentLoaded", function() {
     // loadTasks();
     // Load tasks from the storage (DynamoDB)
-    loadTasksFromStorage();
+    
 });
 /*
 function loadTasks() {
