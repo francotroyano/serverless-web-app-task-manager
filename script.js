@@ -40,12 +40,10 @@ function loadTasksFromStorage() {
             console.log (result);
             alert(JSON.stringify(result));
             const tasks = result.tasks;
-            if (Array.isArray(tasks)) {
-                tasks.forEach(function(task, index) {
-                    alert (JSON.stringify(task));
-                    addTaskToList(task, index);
-                });
-            }
+            tasks.forEach(function(task, index) {
+                alert (JSON.stringify(task));
+                addTaskToList(task, index);
+            });
         })
         .catch(error => console.log('error', error));
 }
