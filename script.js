@@ -37,20 +37,10 @@ function loadTasksFromStorage() {
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result);
-            alert(JSON.stringify(result));
-            // para cada objeto dentro de la matriz JSON.stringify(result) se llama a la función addTaskToList
-            JSON.stringify(result).forEach(function(task) {
+            // para cada objeto dentro de la matriz result se llama a la función addTaskToList
+            result.forEach(function(task) {
                 addTaskToList(task);
             });
-
-
-        /*    
-            const tasks = result.tasks;
-            tasks.forEach(function(task) {
-                addTaskToList(task);
-            });
-        */
         })
         .catch(error => console.log('error', error));
 }
@@ -79,7 +69,6 @@ function addTask() {
 
 function addTaskToList(task) {
     console.log('Adding task to list:', task);
-//  alert(`Adding task to list ${task.idTask}`);
     // Create the task list item
     const taskList = document.getElementById("taskList");
     
