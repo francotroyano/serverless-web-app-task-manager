@@ -1,8 +1,7 @@
-loadTasksFromStorage();
 document.addEventListener("DOMContentLoaded", function() {
     // loadTasks();
     // Load tasks from the storage (DynamoDB)
-    
+    loadTasksFromStorage();
 });
 /*
 function loadTasks() {
@@ -41,8 +40,8 @@ function loadTasksFromStorage() {
             const tasks = result.tasks;
             console.log(tasks);
             if (Array.isArray(tasks)) {
-                tasks.forEach(function(task) {
-                    addTaskToList(task);
+                tasks.forEach(function(task, index) {
+                    addTaskToList(task, index);
                 });
             }
         })
