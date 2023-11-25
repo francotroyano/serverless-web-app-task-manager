@@ -39,7 +39,9 @@ function loadTasksFromStorage() {
         .then(result => {
             console.log (result);
             alert(JSON.stringify(result));
-/*          const tasks = result.tasks;
+            const tasks = result.tasks;
+            alert(JSON.stringify(tasks));
+/*
             if (Array.isArray(tasks)) {
                 tasks.forEach(function(task, index) {
                     addTaskToList(task, index);
