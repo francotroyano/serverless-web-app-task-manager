@@ -37,6 +37,7 @@ function loadTasksFromStorage() {
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => response.json())
         .then(data => {
+            alert(data)
             data.forEach(task => {
                 addTaskToList(task);
             });
