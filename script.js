@@ -35,18 +35,31 @@ function loadTasksFromStorage() {
     };
     // API call to retrieve tasks from DynamoDB
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
-        .then(response => {
-            let js = JSON.stringify(response);
-            alert (js);
-            let size = js.length;
-            while (size > 0) {
-                addTaskToList(js[size-1]);
-                size--;
-            }
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(task => {
+                addTaskToList(task);
+            });
         })
         .catch(error => console.log('error', error));
+}
 
-    }
+function addTaskToList(task) {
+    console.log('Adding task to list:', task);
+    // Create the task list item
+    const taskList = document.getElementById("taskList");
+    
+    const li = document.createElement("li");
+    li.id = task.idTask; //Establecer el id del li como el idTask de la tarea
+    li.innerHTML = `
+        <strong class="${task.toggle ? 'toggle' : ''}">${task.nameTask}</strong>
+        <p>${task.descriptionTask}</p>
+        <button class="toggle-btn">Toggle</button>
+        <button class="delete-btn">Delete</button>
+    `;
+    // Add the task to the DOM
+    taskList.appendChild(li);
+}
 
 
 function addTask() {
