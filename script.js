@@ -37,13 +37,16 @@ function loadTasksFromStorage() {
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => response.json())
         .then(result => {
-            // para cada objeto dentro de la matriz result se llama a la función addTaskToList
-            result.forEach(function(task) {
-                addTaskToList(task);
-            });
+            alert(result);
+            let size = result.length;
+            while (size > 0) {
+                addTaskToList(result[size-1]);
+                size--;
+            }
         })
         .catch(error => console.log('error', error));
-}
+
+    }
 
 
 function addTask() {
