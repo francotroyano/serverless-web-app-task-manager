@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-    loadTasks();
+    // loadTasks();
     // Load tasks from the storage (DynamoDB)
     loadTasksFromStorage();
 });
-
+/*
 function loadTasks() {
     const taskList = document.getElementById("taskList");
     taskList.innerHTML = "";
@@ -16,14 +16,16 @@ function loadTasks() {
         //{ id: "23fdsdfedwe3", nameTask: "Sample Task 2", descriptionTask: "Description for Sample Task 2", toogle: true },
         // Add more tasks as needed
     //];
-/*
+
     tasks.forEach(function(task, index) {
         addTaskToList(task, index);
     });
-*/
 }
+*/
 
 function loadTasksFromStorage() {
+    const taskList = document.getElementById("taskList");
+    taskList.innerHTML = "";
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var requestOptions = {
