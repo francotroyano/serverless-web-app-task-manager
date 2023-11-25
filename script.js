@@ -39,10 +39,18 @@ function loadTasksFromStorage() {
         .then(result => {
             console.log(result);
             alert(JSON.stringify(result));
-        
-            result.forEach(function(task) {
+            // para cada objeto dentro de la matriz JSON.stringify(result) se llama a la función addTaskToList
+            JSON.stringify(result).forEach(function(task) {
                 addTaskToList(task);
             });
+
+
+        /*    
+            const tasks = result.tasks;
+            tasks.forEach(function(task) {
+                addTaskToList(task);
+            });
+        */
         })
         .catch(error => console.log('error', error));
 }
