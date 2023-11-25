@@ -36,7 +36,7 @@ function loadTasksFromStorage() {
     // API call to retrieve tasks from DynamoDB
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => {
-            let js = response.json();
+            let js = JSON.stringify(response);
             alert (js);
             let size = js.length;
             while (size > 0) {
