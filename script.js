@@ -45,6 +45,7 @@ function loadTasksFromStorage() {
         .catch(error => console.log('error', error));
 }
 
+
 function addTask() {
     const taskNameInput = document.getElementById("taskNameInput");
     const taskDescriptionInput = document.getElementById("taskDescriptionInput");
