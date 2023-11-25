@@ -69,6 +69,7 @@ function addTask() {
 }
 
 function addTaskToList(task) {
+    console.log('Adding task to list:', task);
     // Create the task list item
     const taskList = document.getElementById("taskList");
     
