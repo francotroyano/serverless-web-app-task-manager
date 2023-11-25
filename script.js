@@ -37,12 +37,15 @@ function loadTasksFromStorage() {
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => response.json())
         .then(result => {
-            const tasks = result.tasks;
+            console.log (result);
+            alert(result);
+/*          const tasks = result.tasks;
             if (Array.isArray(tasks)) {
                 tasks.forEach(function(task, index) {
                     addTaskToList(task, index);
                 });
             }
+*/
         })
         .catch(error => console.log('error', error));
 }
