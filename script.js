@@ -38,11 +38,9 @@ function loadTasksFromStorage() {
         .then(response => response.json())
         .then(tasks => {
             console.log(tasks);
-            if (Array.isArray(tasks)) {
-                tasks.forEach(function(task) {
-                    addTaskToList(task);
-                });
-            }
+            tasks.forEach(function(task) {
+                addTaskToList(task);
+            });
         })
         .catch(error => console.log('error', error));
 }
