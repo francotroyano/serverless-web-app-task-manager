@@ -37,11 +37,14 @@ function loadTasksFromStorage() {
     // API call to retrieve tasks from DynamoDB
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => response.json())
-        .then(tasks => {
+        .then(result => {
+            const tasks = result.tasks;
             console.log(tasks);
-            tasks.forEach(function(task) {
-                addTaskToList(task);
-            });
+            if (Array.isArray(tasks)) {
+                tasks.forEach(function(task) {
+                    addTaskToList(task);
+                });
+            }
         })
         .catch(error => console.log('error', error));
 }
