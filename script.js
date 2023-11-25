@@ -40,10 +40,8 @@ function loadTasksFromStorage() {
             console.log (result);
             alert(JSON.stringify(result));
             const tasks = result.tasks;
-            alert (JSON.stringify(tasks));
-            tasks.forEach(function(task, index) {
-                alert (JSON.stringify(task));
-                addTaskToList(task, index);
+            tasks.forEach(function(task) {
+                addTaskToList(task);
             });
         })
         .catch(error => console.log('error', error));
@@ -73,6 +71,7 @@ function addTask() {
 
 function addTaskToList(task) {
     console.log('Adding task to list:', task);
+//  alert(`Adding task to list ${task.idTask}`);
     // Create the task list item
     const taskList = document.getElementById("taskList");
     
