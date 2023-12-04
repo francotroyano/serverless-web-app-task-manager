@@ -36,17 +36,21 @@ function loadTasksFromStorage() {
     // API call to retrieve tasks from DynamoDB
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => {
+
+            let obj1 = response[0]; // fallará?
+            console.log("item 1 de la tabla Dynamo: " + obj1.toString); // fallará?
+
             //let js = JSON.stringify(response);
-            let arrayDePrueba = [{"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false}, {"idTask":"1701704021444","nameTask":"m","descriptionTask":"m","toggle":false}];
-            let jsString = JSON.stringify(arrayDePrueba);
-            alert (jsString);
+            let arrayDePrueba = [{"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false}, {"idTask":"1701704021444","nameTask":"m","descriptionTask":"m","toggle":true}];
+            let jsString = JSON.stringify(arrayDePrueba); // debugging
+            alert (jsString); // debugging
             let jsObject = JSON.parse(jsString);
             let size = jsObject.length;
-            alert (size);
+            alert (size); // debugging
             while (size > 0) {
                 //addTaskToList(jsString[size-1]);
                 addTaskToList(arrayDePrueba[size-1]);
-                size = size-1;
+                size--;
             }
         })
         .catch(error => console.log('error', error));
