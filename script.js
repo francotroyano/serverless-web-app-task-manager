@@ -39,7 +39,7 @@ function loadTasksFromStorage() {
             //let js = JSON.stringify(response);
             let js = JSON.stringify({"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false});
             alert (js);
-            let size = js.length;
+            let size = JSON.parse(js).length;
             while (size > 0) {
                 addTaskToList(js[size-1]);
                 size = size-1;
