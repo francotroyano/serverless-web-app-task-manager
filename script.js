@@ -43,6 +43,7 @@ function loadTasksFromStorage() {
             
             //let arrayDePrueba = [{"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false}, {"idTask":"1701704021444","nameTask":"m","descriptionTask":"m","toggle":true}];
             let arrayDePrueba = response.arrayItems;
+            alert (arrayDePrueba); // debugging
             let jsString = JSON.stringify(arrayDePrueba); // debugging
             alert (jsString); // debugging
             let jsObject = JSON.parse(jsString);
