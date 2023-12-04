@@ -34,16 +34,21 @@ function loadTasksFromStorage() {
         redirect: 'follow'
     };
     
-     
     
+    fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
+        .then(response => response.json())
+        .then(result => alert(result))
+        .catch(error => console.log('error', error));
+    
+
+    /*
     // API call to retrieve tasks from DynamoDB
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => {
+            
             //let js = JSON.stringify(response);
             
-            //let arrayDePrueba = [{"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false}, {"idTask":"1701704021444","nameTask":"m","descriptionTask":"m","toggle":true}];
-            let arrayDePrueba = response.arrayItems;
-            alert (arrayDePrueba); // debugging
+            let arrayDePrueba = [{"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false}, {"idTask":"1701704021444","nameTask":"m","descriptionTask":"m","toggle":true}];
             let jsString = JSON.stringify(arrayDePrueba); // debugging
             alert (jsString); // debugging
             let jsObject = JSON.parse(jsString);
@@ -57,7 +62,9 @@ function loadTasksFromStorage() {
             }
         })
         .catch(error => console.log('error', error));
+    */
     }
+    
 
 function addTaskToList(task) {
     console.log('Adding task to list:', task);
