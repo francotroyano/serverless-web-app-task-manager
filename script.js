@@ -36,7 +36,7 @@ function loadTasksFromStorage() {
     
     
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
-        .then(response => response.json())
+        .then(response => JSON.stringify(response))
         .then(result => alert(result))
         .catch(error => console.log('error', error));
     
