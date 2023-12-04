@@ -36,10 +36,6 @@ function loadTasksFromStorage() {
     // API call to retrieve tasks from DynamoDB
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => {
-
-            let obj1 = response[0]; // fallará?
-            alert("item 1 de la tabla Dynamo: " + obj1.toString); // fallará?
-
             //let js = JSON.stringify(response);
             let arrayDePrueba = [{"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false}, {"idTask":"1701704021444","nameTask":"m","descriptionTask":"m","toggle":true}];
             let jsString = JSON.stringify(arrayDePrueba); // debugging
@@ -62,7 +58,11 @@ function addTaskToList(task) {
     const taskList = document.getElementById("taskList");
     
     const li = document.createElement("li");
-    li.id = task.idTask; //Establecer el id del li como el idTask de la tarea
+    if (task.idTask === undefined) {
+        li.id = task.ID;
+    } else {
+        li.id = task.idTask; //Establecer el id del li como el idTask de la tarea
+    }
     li.innerHTML = `
         <strong class="${task.toggle ? 'toggle' : ''}">${task.nameTask}</strong>
         <p>${task.descriptionTask}</p>
