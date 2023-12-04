@@ -41,7 +41,7 @@ function loadTasksFromStorage() {
             let size = js.length;
             while (size > 0) {
                 addTaskToList(js[size-1]);
-                size--;
+                size = size-1;
             }
         })
         .catch(error => console.log('error', error));
@@ -92,7 +92,13 @@ function addTaskToList(task) {
     const taskList = document.getElementById("taskList");
     
     const li = document.createElement("li");
-    li.id = task.idTask; //Establecer el id del li como el idTask de la tarea
+    
+    if (task.idTask === undefined) {
+        li.id = task.ID;
+    } else {
+        li.id = task.idTask; //Establecer el id del li como el idTask de la tarea
+    }
+    
     li.innerHTML = `
         <strong class="${task.toggle ? 'toggle' : ''}">${task.nameTask}</strong>
         <p>${task.descriptionTask}</p>
