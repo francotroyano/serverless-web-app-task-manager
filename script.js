@@ -38,7 +38,7 @@ function loadTasksFromStorage() {
         .then(response => {
 
             let obj1 = response[0]; // fallará?
-            console.log("item 1 de la tabla Dynamo: " + obj1.toString); // fallará?
+            alert("item 1 de la tabla Dynamo: " + obj1.toString); // fallará?
 
             //let js = JSON.stringify(response);
             let arrayDePrueba = [{"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false}, {"idTask":"1701704021444","nameTask":"m","descriptionTask":"m","toggle":true}];
