@@ -37,7 +37,7 @@ function loadTasksFromStorage() {
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => {
             //let js = JSON.stringify(response);
-            let arrayDePrueba = [{"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false}; {"idTask":"1701704021444","nameTask":"m","descriptionTask":"m","toggle":false}];
+            let arrayDePrueba = [{"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false}, {"idTask":"1701704021444","nameTask":"m","descriptionTask":"m","toggle":false}];
             let jsString = JSON.stringify(arrayDePrueba);
             alert (jsString);
             let jsObject = JSON.parse(jsString);
