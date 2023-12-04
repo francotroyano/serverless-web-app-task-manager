@@ -33,18 +33,45 @@ function loadTasksFromStorage() {
         headers: myHeaders,
         redirect: 'follow'
     };
+    
+    
+    let tasksArray = []; // Variable para almacenar los elementos de la tabla
+
+    fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            tasksArray = data; // Almacenar los elementos de la tabla en la variable tasksArray
+            // Resto del código aquí
+            let size = tasksArray.length;
+/*
+            let jsString = JSON.stringify(tasksArray); // debugging
+            alert (jsString); // debugging
+            let jsObject = JSON.parse(jsString);
+            let size = jsObject.length;
+*/
+            alert (size); // debugging
+            while (size > 0) {
+                //addTaskToList(jsString[size-1]);
+                addTaskToList(tasksArray[size-1]);
+                size--;
+            }
+        })
+        .catch(error => console.log('error', error));
+    
+    
+    
+    
+    /* A RECUPERAR
     // API call to retrieve tasks from DynamoDB
     fetch("https://jmayy9wgi3.execute-api.eu-west-1.amazonaws.com/dev", requestOptions)
         .then(response => {
-            let js = JSON.stringify(response); // probando
-            alert (js); // probando
-            let jsObject = JSON.parse(js); // probando
-            /*
+            //let js = JSON.stringify(response);
+            
             let arrayDePrueba = [{"idTask":"1701704021291","nameTask":"n","descriptionTask":"n","toggle":false}, {"idTask":"1701704021444","nameTask":"m","descriptionTask":"m","toggle":true}];
             let jsString = JSON.stringify(arrayDePrueba); // debugging
             alert (jsString); // debugging
             let jsObject = JSON.parse(jsString);
-            */
+            
             let size = jsObject.length;
             alert (size); // debugging
             while (size > 0) {
@@ -54,7 +81,8 @@ function loadTasksFromStorage() {
             }
         })
         .catch(error => console.log('error', error));
-}
+    */
+    }
 
 function addTaskToList(task) {
     console.log('Adding task to list:', task);
